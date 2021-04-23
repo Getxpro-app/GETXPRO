@@ -41,7 +41,14 @@ function Signup(props) {
   };
 
   const responseGoogle = (response) => {
-    console.log(response.profileObj);
+      console.log(response.profileObj);
+      const firstName = response.profileObj.givenName
+      const lastName = response.profileObj.familyName
+      const username = response.profileObj.googleId
+      const email = response.profileObj.email
+
+      console.log('Hi my name is ' + firstName + ' ' + lastName + ' my email is ' + email)
+    
   }
 
   const componentClicked = () => {
