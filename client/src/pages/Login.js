@@ -10,15 +10,16 @@ import Auth from "../utils/auth";
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AuthWrapper from '../components/AuthWrapper';
 
 function LoginUser(props) {
-    const [formState, setFormState] = useState({ email: '', password: '' })
+    const [formState, setFormState] = useState({ username: '', password: '' })
     const [login, { error }] = useMutation(LOGIN_USER);
 
     const handleFormSubmit = async event => {
         event.preventDefault();
         try {
-            const mutationResponse = await login({ variables: { email: formState.email, password: formState.password } })
+            const mutationResponse = await login({ variables: { username: formState.username, password: formState.password } })
             const token = mutationResponse.data.login.token;
             Auth.login(token);
         } catch (e) {
@@ -35,7 +36,20 @@ function LoginUser(props) {
     };
 
     const responseGoogle = (response) => {
-      console.log(response);
+      console.log(response.profileObj);
+      login({
+        variables: {
+          username: response.profileObj.googleId,
+          password: response.profileObj.googleId
+        }
+      })
+
+      const token = login.token;
+      Auth.login(token);
+    };
+
+    const responseGoogleFailure = () => {
+      console.log('Login With Google Failed');
     }
 
     const componentClicked = () => {
@@ -47,7 +61,7 @@ function LoginUser(props) {
     }
 
     return (
-    <div className="container my-1 login-container">
+    <AuthWrapper className="container my-1 login-container">
       <div className="home-link-container">
         <Link to="/" className='home-link'>
         <FontAwesomeIcon icon={faArrowLeft}/>
@@ -55,7 +69,7 @@ function LoginUser(props) {
       </div>
 
       <h2 className="login-header">Welcome Back!</h2>
-      <div className='facebookLoginContainer'>
+      {/* <div className='facebookLoginContainer'>
         <FacebookLogin
           appId="287273199513032"
           autoLoad={true}
@@ -67,8 +81,8 @@ function LoginUser(props) {
               <FontAwesomeIcon className='facebook-logo' icon={faFacebookF}/> <span className='facebook-btn-text'>CONTINUE WITH FACEBOOK</span></button>
           )}
         />
-      </div>
-      <div className='googleLoginContainter'>
+      </div> */}
+      {/* <div className='googleLoginContainter'>
         <GoogleLogin
           clientId="43051589855-j0ihpdaumb3gsbgc6la8n5gppfuvoo3u.apps.googleusercontent.com"
           render={renderProps => (
@@ -76,18 +90,18 @@ function LoginUser(props) {
           )}
           buttonText='Continue With Google'
           onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={'sinlge_host_origin'}
+          onFailure={responseGoogleFailure}
+          cookiePolicy={'single_host_origin'}
         />
-      </div>
-      <h6 className='login-form-text'>OR LOG IN WITH EMAIL</h6>
+      </div> */}
+      <h6 className='login-form-text'>LOG IN WITH USERNAME</h6>
       <form onSubmit={handleFormSubmit} className="login-form">
         <div className="form-div">
           <input
-            placeholder="Email Address"
-            name="email"
-            type="email"
-            id="email"
+            placeholder="Username"
+            name="username"
+            type="username"
+            id="username"
             onChange={handleChange}
           />
         </div>
@@ -116,7 +130,7 @@ function LoginUser(props) {
       </form>
 
       <script src="https://apis.google.com/js/platform.js" async defer></script>
-    </div>
+    </AuthWrapper>
     )
 }
 
