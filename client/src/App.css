@@ -1,6 +1,9 @@
 :root {
   --homepage-color: rgb(198, 220, 228);
 }
+.background-color {
+  background-color: var(--homepage-color);
+}
 .container {
   border-radius: 1em;
   padding: 1em;
@@ -10,6 +13,10 @@
   margin-right: -50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+.homepage-container {
+  background-color: #F3F3F3;
+  
 }
 a:active,
 a:focus,
@@ -41,7 +48,7 @@ input {
   border: none;
   border-radius: 10px;
   width: 16vw;
-  background-color: rgb(216, 215, 215);
+  background-color:#FBFBFB;
   font-family: inherit;
   padding: 10px;
   margin-bottom: 2vh;
@@ -54,6 +61,7 @@ input {
   background-repeat: no-repeat;
   background-position: center 100%;
   background-image: url('./pages/public/Frame.png');
+  background-color: #F3F3F3;
 }
 .home-signup-btn {
   border-radius: 20px;
@@ -166,7 +174,7 @@ input {
   text-align: left;
 }
 .checklist-form{
-  background-color: rgb(223, 223, 223);
+  background-color: #FBFBFB;
   text-align: left;
   border-radius: 20px;
   padding: 5px 20px;

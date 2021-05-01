@@ -6,22 +6,23 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import Logo from './public/getxgo.svg';
 import { useCheckboxState, Checkbox } from 'reakit/Checkbox';
-import { checked } from '../App.css'
-import Camera from './Camera'
-const checklistItems = [{
-        name: 'Passport',
-        attributes: 'passport',
+import { checked } from '../App.css' 
+import Camera from'./Camera'
+const checklistItems = [
+    {
+        name:'Passport',
+        attributes:'passport',
     },
     {
-        name: 'Home Insurance',
-        attributes: 'homeInsurance'
+        name:'Home Insurance',
+        attributes:'homeInsurance'
     },
     {
-        name: 'Auto Insurance',
+        name:'Auto Insurance',
         attributes: 'autoInsurance'
     },
     {
-        name: 'Medical Card',
+        name:'Medical Card',
         attributes: 'medicalCard'
     },
     {
@@ -29,7 +30,8 @@ const checklistItems = [{
         attributes: 'socialSecurityCard'
     }
 ]
-const personalItems = [{
+const personalItems = [
+    {
         name: 'Cash',
         attributes: 'cash'
     },
@@ -38,11 +40,10 @@ const personalItems = [{
         attributes: 'jacket'
     }
 ]
-
-function Checklist(props) {
-    const { username: userParam } = useParams();
+function Checklist (props)  {
+    const  { username: userParam } = useParams();
     const checkbox = useCheckboxState({ state: [] });
-    const [formState, setFormState] = useState({
+    const [formState, setFormState] = useState({ 
         passport: false,
         homeInsurance: false,
         autoInsurance: false,
@@ -54,7 +55,7 @@ function Checklist(props) {
     const handleCheckboxChange = event => {
         const { name, value } = event.target;
         console.log(document.getElementById(name).checked)
-        if (document.getElementById(name).checked === true) {
+        if(document.getElementById(name).checked === true) {
             setFormState({
                 ...formState,
                 [name]: true
@@ -67,72 +68,66 @@ function Checklist(props) {
         }
         console.log(formState)
     }
-
-    const { loading, data } = useQuery(QUERY_ME);
+    
+    const {loading, data} = useQuery(QUERY_ME);
     if (loading) {
-        return <div > Loading User... < /div>;
+        return <div>Loading User...</div>;
     }
 
-    return ( <
-        div className = "container my-1" >
-        <
-        div className = 'checklist-logo' >
-        <
-        object className = "logo"
-        data = { Logo } > < /object> <
-        /div> <
-        div className = 'checklist-header' >
-        <
-        h1 className = 'hello-user' > Hello, { data.me.username } < /h1> <
-        p > Your checklist < /p> <
-        /div> <
-        form className = 'checklist-form' >
-        <
-        h4 className = 'checklist-section-header' > Documents < /h4> <
-        p className = 'checklist-instructions' > Make a copy of the list below and put inside of your GETXGO Kit < /p> {
-            checklistItems.map((checklistItem, index) => ( <
-                div key = { index } >
-                <
-                label htmlFor = { checklistItem.attributes }
-                className = 'checkbox-label' >
-                <
-                Checkbox {...checkbox }
-                name = { checklistItem.attributes }
-                id = { checklistItem.attributes }
-                value = { checklistItem.attributes }
-                className = 'checkbox'
-                checked = { checked }
-                onChange = { handleCheckboxChange }
-                /> <
-                span > { checklistItem.name } < /span> <
-                Camera / >
-                <
-                /label> <
-                /div>
-            ))
-        } <
-        h4 className = 'checklist-section-header' > Personal Items < /h4> {
-            personalItems.map((personalItem, index) => ( <
-                div key = { index } >
-                <
-                label htmlFor = { personalItem.attributes }
-                className = 'checkbox-label' >
-                <
-                Checkbox {...checkbox }
-                name = { personalItem.attributes }
-                id = { personalItem.attributes }
-                value = { personalItem.attributes }
-                className = 'checkbox'
-                checked = { checked }
-                onChange = { handleCheckboxChange }
-                /> <
-                span > { personalItem.name } < /span> <
-                /label> <
-                /div>
-            ))
-        } <
-        /form> <
-        /div>
+    return (
+        <div className="container my-1 background-color">
+            <div className='checklist-logo'>
+                <object className="logo" data={Logo}></object>
+            </div>
+            <div className='checklist-header'>
+                <h1 className='hello-user'>Hello, {data.me.username}</h1>
+                <p>Your checklist</p><br></br>
+            </div>
+            <form className='checklist-form'>
+                <h4 className='checklist-section-header'>Documents</h4>
+                <p className='checklist-instructions'>Make a copy of the list below and put inside of your GETXGO Kit</p>
+                {checklistItems.map((checklistItem, index) => (
+                    <div key={index}>
+                        <label
+                        htmlFor={checklistItem.attributes}
+                        className='checkbox-label'
+                        >
+                            <Checkbox
+                            {...checkbox}
+                            name={checklistItem.attributes}
+                            id={checklistItem.attributes}
+                            value={checklistItem.attributes}
+                            className='checkbox'
+                            checked={checked}
+                            onChange={handleCheckboxChange}
+                            />
+                            <span>{checklistItem.name}</span>
+                            <Camera />
+                        </label>
+                    </div>
+                ))}
+                <h4 className='checklist-section-header'>Personal Items</h4>
+                {personalItems.map((personalItem, index) => (
+                    <div key={index}>
+                        <label
+                        htmlFor={personalItem.attributes}
+                        className='checkbox-label'
+                        >
+                            <Checkbox
+                            {...checkbox}
+                            name={personalItem.attributes}
+                            id={personalItem.attributes}
+                            value={personalItem.attributes}
+                            className='checkbox'
+                            checked={checked}
+                            onChange={handleCheckboxChange}
+                            />
+                            <span>{personalItem.name}</span>
+                        </label>
+                    </div>
+                ))}
+            </form>
+        </div>
     )
 }
 export default Checklist;
