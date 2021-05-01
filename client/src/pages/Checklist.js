@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import Logo from './public/getxgo.svg';
 import { useCheckboxState, Checkbox } from 'reakit/Checkbox';
-import { checked } from '../App.css';
+import { checked } from '../App.css'
 import Camera from './Camera'
 const checklistItems = [{
         name: 'Passport',
@@ -74,22 +74,22 @@ function Checklist(props) {
     }
 
     return ( <
-            div className = "container my-1" >
-            <
-            div className = 'checklist-logo' >
-            <
-            object className = "logo"
-            data = { Logo } > < /object> < /
-            div > <
-            div className = 'checklist-header' >
-            <
-            h1 className = 'hello-user' > Hello, { data.me.username } < /h1> <
-            p > Your checklist < /p> < /
-            div > <
-            form className = 'checklist-form' >
-            <
-            h4 className = 'checklist-section-header' > Documents < /h4> <
-            p className = 'checklist-instructions' > Make a copy of the list below and put inside of your GETXGO Kit < /p> {
+        div className = "container my-1" >
+        <
+        div className = 'checklist-logo' >
+        <
+        object className = "logo"
+        data = { Logo } > < /object> <
+        /div> <
+        div className = 'checklist-header' >
+        <
+        h1 className = 'hello-user' > Hello, { data.me.username } < /h1> <
+        p > Your checklist < /p> <
+        /div> <
+        form className = 'checklist-form' >
+        <
+        h4 className = 'checklist-section-header' > Documents < /h4> <
+        p className = 'checklist-instructions' > Make a copy of the list below and put inside of your GETXGO Kit < /p> {
             checklistItems.map((checklistItem, index) => ( <
                 div key = { index } >
                 <
@@ -103,38 +103,36 @@ function Checklist(props) {
                 className = 'checkbox'
                 checked = { checked }
                 onChange = { handleCheckboxChange }
-                />   <
+                /> <
                 span > { checklistItem.name } < /span> <
-                Camera / > < /
-                label >
+                Camera / >
                 <
+                /label> <
                 /div>
-
             ))
         } <
         h4 className = 'checklist-section-header' > Personal Items < /h4> {
-    personalItems.map((personalItem, index) => ( <
-        div key = { index } >
-        <
-        label htmlFor = { personalItem.attributes }
-        className = 'checkbox-label' >
-        <
-        Checkbox {...checkbox }
-        name = { personalItem.attributes }
-        id = { personalItem.attributes }
-        value = { personalItem.attributes }
-        className = 'checkbox'
-        checked = { checked }
-        onChange = { handleCheckboxChange }
-        /> <
-        span > { personalItem.name } < /span>  < /
-        label >
-        <
+            personalItems.map((personalItem, index) => ( <
+                div key = { index } >
+                <
+                label htmlFor = { personalItem.attributes }
+                className = 'checkbox-label' >
+                <
+                Checkbox {...checkbox }
+                name = { personalItem.attributes }
+                id = { personalItem.attributes }
+                value = { personalItem.attributes }
+                className = 'checkbox'
+                checked = { checked }
+                onChange = { handleCheckboxChange }
+                /> <
+                span > { personalItem.name } < /span> <
+                /label> <
+                /div>
+            ))
+        } <
+        /form> <
         /div>
-    ))
-} <
-/form> < /
-div >
-)
+    )
 }
 export default Checklist;
