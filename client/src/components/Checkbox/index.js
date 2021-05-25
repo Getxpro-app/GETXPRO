@@ -1,22 +1,16 @@
 import React from 'react'
-import { useCheckboxState, Checkbox } from 'reakit/Checkbox';
+
 import { checked } from '../../App.css' 
 
-const Checkbox = ({ checked, name, attributes,  ...props }) => (
+const Checkbox = ({isChecked, formal, camel}) => {
+    console.log(isChecked);
+
+    return (
     <div>
-            <Checkbox
-            {...checkbox}
-            name={attributes}
-            id={attributes}
-            value={attributes}
-            className='checkbox'
-            checked={checked}
-            />
-        <span>{name}</span>
+        <input type="checkbox" checked={isChecked} id={camel} name={camel}></input>
+        <label htmlFor={camel} className="checkbox-label">{formal}</label>
     </div>
-)
+    )
+};
 
 export default Checkbox;
-
-
-cd .

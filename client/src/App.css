@@ -4,7 +4,6 @@
   --spacing-two: calc(1rem);
   --spacing-five: calc(2.5rem);
 }
-
 .container {
   border-radius: 1em;
   padding: 1em;
@@ -16,7 +15,6 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
-
 a:active,
 a:focus,
 button:focus,
@@ -45,7 +43,6 @@ button {
   cursor: pointer;
   margin-bottom: 3vh;
 }
-
 input {
   border: none;
   border-radius: 10px;
@@ -54,7 +51,6 @@ input {
   font-family: inherit;
   padding: 10px;
   margin-bottom: 2vh;
-
 }
 
 /* Nav Bar Styling */
@@ -149,8 +145,9 @@ nav ul li a {
   padding-bottom: var(--spacing-two);
 }
 
-/* Homepage Styling */
 
+
+/* Homepage Styling */
 .homepage-jumbo {
   background-size: cover;
   height: 65vh;
@@ -159,7 +156,6 @@ nav ul li a {
   background-position: center 100%;
   background-image: url('./pages/public/Frame.png');
 }
-
 .home-signup-btn {
   border-radius: 20px;
   text-decoration: none;
@@ -169,22 +165,18 @@ nav ul li a {
   font-size: 14px;
   padding: 10px 120px;
 }
-
 .home-signup-btn-container {
   margin-top: 4em;
   margin-bottom: 2em;
 }
-
 .home-login-link {
   text-decoration: none;
   color: var(--homepage-color);
 }
-
 /* Login Page Styling */
 .home-link-container {
   margin-bottom: 10vh;
 }
-
 .home-link {
   float: left;
   text-decoration: none;
@@ -193,31 +185,26 @@ nav ul li a {
   border: .13em rgb(202, 202, 202) solid;
   padding: 10px 12px;
 }
-
 .facebook-login-btn {
   color: white;
   padding: 10px;
   border-radius: 20px;
   background-color: rgb(153, 153, 255);
 }
-
 .facebook-btn-text {
   font-size: 12px;
   font-weight: bold;
 }
-
 .facebook-logo {
   font-size: 18px;
   padding-right: 20px;
 }
-
 .google-btn {
   border: rgb(189, 189, 189) solid 1px;
   padding: 9px 9px;
   border-radius: 20px;
   display: inline-flex;
 }
-
 .google-btn-text {
   font-size: 12px;
   color: black;
@@ -225,17 +212,14 @@ nav ul li a {
   margin-top: 3px;
   padding: 0px 10px;
 }
-
 .google-logo {
   height: 1.2em;
   margin-right: 1em;
 }
-
 .login-form-text,
 .signup-form-text {
   color: rgb(163, 163, 163);
 }
-
 .login-btn,
 .signup-btn {
   border-radius: 20px;
@@ -246,7 +230,6 @@ nav ul li a {
   width: 18vw;
   padding: 10px;
 }
-
 .signup-text,
 .homepage-account-text {
   color: rgb(163, 163, 163);
@@ -254,15 +237,12 @@ nav ul li a {
   font-size: 14px;
   font-weight: bold;
 }
-
 .signup-link,
 .login-link {
   text-decoration: none;
   color: rgb(149, 149, 250);
 }
-
 /* SignUp Styling */
-
 .toggle-password-btn {
   position: absolute;
   top: 0;
@@ -274,7 +254,6 @@ nav ul li a {
   cursor: pointer;
   transform: translateX(-10px);
 }
-
 .btn-in {
   position: relative;
 }
@@ -338,6 +317,7 @@ nav ul li a {
 
 .checkbox:after {
   content: "✔";
+
   display: none;
   color: black;
   font-size: 90%;
