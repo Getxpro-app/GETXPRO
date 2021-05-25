@@ -9,6 +9,40 @@ import { checked } from '../App.css';
 import { QUERY_ME } from '../utils/queries';
 import Checkbox from '../components/Checkbox/index';
 import { EDIT_CHECKLIST } from '../utils/mutations';
+import { capitalizeFirstLetter } from '../utils/helpers';
+
+const checklistItems = [
+    {
+        name:'Passport',
+        attributes:'passport',
+    },
+    {
+        name:'Home Insurance',
+        attributes:'homeInsurance'
+    },
+    {
+        name:'Auto Insurance',
+        attributes: 'autoInsurance'
+    },
+    {
+        name:'Medical Card',
+        attributes: 'medicalCard'
+    },
+    {
+        name: 'Social Security Card',
+        attributes: 'socialSecurityCard'
+    }
+]
+const personalItems = [
+    {
+        name: 'Cash',
+        attributes: 'cash'
+    },
+    {
+        name: 'Jacket',
+        attributes: 'jacket'
+    }
+]
 
 function Checklist(props) {
 	const [formState, setFormState] = useState();
@@ -39,7 +73,14 @@ function Checklist(props) {
 	})
 	
 	if(formState) {
+		document.getElementById('passport').checked = formState.passport;
+		document.getElementById('homeInsurance').checked = formState.homeInsurance;
 		document.getElementById('autoInsurance').checked = formState.autoInsurance;
+		document.getElementById('medicalCard').checked = formState.medicalCard;
+		document.getElementById('socialSecurityCard').checked = formState.socialSecurityCard;
+		document.getElementById('cash').checked = formState.cash;
+		document.getElementById('jacket').checked = formState.jacket;
+
 	}
 	
 	function saveCheckbox() {
@@ -47,14 +88,17 @@ function Checklist(props) {
 
 		editChecklist({variables: {
 			autoInsurance: document.getElementById('autoInsurance').checked, 
-			passport: true,
-			homeInsurance: true,
-			medicalCard: true,
-			socialSecurityCard: true,
-			cash: true,
-			jacket: true
+			passport: document.getElementById('passport').checked,
+			homeInsurance: document.getElementById('homeInsurance').checked,
+			medicalCard: document.getElementById('medicalCard').checked,
+			socialSecurityCard: document.getElementById('socialSecurityCard').checked,
+			cash: document.getElementById('cash').checked,
+			jacket: document.getElementById('jacket').checked
 		}})
 	}
+	if (loading) {
+        return <div>Loading User...</div>;
+    }
 
 	return (
 		<div className='container my-1'>
@@ -62,7 +106,7 @@ function Checklist(props) {
 				<object className='logo' data={Logo}></object>
 			</div>
 			<div className='checklist-header'>
-				<h1 className='hello-user'>Hello, User</h1>
+				<h1 className='hello-user'>Hello, {capitalizeFirstLetter(data.me.username)}</h1>
 				<p>Your checklist</p>
 			</div>
 			<form className='checklist-form'>
@@ -73,10 +117,20 @@ function Checklist(props) {
 					Make a copy of the list below and put
 					inside of your GETXGO Kit
 				</p>
-				<div>
-					<input type="checkbox" id='autoInsurance' name='autoInsurance'></input>
-					<label htmlFor='autoInsurance' className="checkbox-label">Auto Insurance</label>
-				</div>
+				{checklistItems.map((checklistItem, index) => (
+					<div key={index}>
+						<input type="checkbox" id={checklistItem.attributes} name={checklistItem.attributes} className='checkbox'></input>
+						<label htmlFor={checklistItem.attributes} className='checkbox-label'><span>{checklistItem.name}</span></label>
+					</div>
+				))}
+				<br></br>
+				<h4 className='checklist-section-header'>Personal Items</h4>
+				{personalItems.map((personalItem, index)=> (
+					<div key={index}>
+						<input type="checkbox" name={personalItem.attributes} id={personalItem.attributes} className='checkbox'/>
+						<label htmlFor={personalItem.attributes} className='checkbox-label'><span>{personalItem.name}</span></label>
+					</div>
+				))}
 				<br></br>
 				<button id="saveBtn" type="button" onClick={saveCheckbox}>Save</button>
 			</form>
