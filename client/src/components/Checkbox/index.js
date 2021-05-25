@@ -13,10 +13,10 @@ const Checkbox = ({ checked, name, attributes,  ...props }) => (
             checked={checked}
             />
         <span>{name}</span>
-        </label>
     </div>
 )
 
 export default Checkbox;
 
 
+cd .

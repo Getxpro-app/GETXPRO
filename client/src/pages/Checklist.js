@@ -43,6 +43,7 @@ const personalItems = [
 
 function Checklist (props)  {
     const  { username: userParam } = useParams();
+    const   { isChecked, setIsChecked } = useState();
     const checkbox = useCheckboxState({ state: [] });
     const [formState, setFormState] = useState({ 
         passport: false, 
@@ -62,7 +63,7 @@ function Checklist (props)  {
         if(document.getElementById(name).checked === true) {
             setFormState({ 
                 ...formState,
-                [name]: true
+                [name]: {isChecked}
             });
         } else if (document.getElementById(name).checked === false) {
             setFormState({

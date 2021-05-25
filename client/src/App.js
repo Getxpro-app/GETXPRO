@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Checklist from './pages/Checklist';
+import Nav from './components/Nav';
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/checklist" component={Checklist} />
           </Switch>
+          <Nav/>
         </div>
 
       </Router>
