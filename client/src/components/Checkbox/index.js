@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { checked } from '../../App.css' 
 
 const Checkbox = ({isChecked, formal, camel}) => {
