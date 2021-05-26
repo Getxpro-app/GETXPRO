@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useQuery, useMutation } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Logo from './public/getxgo.svg';
-// import { useCheckboxState, Checkbox } from 'reakit/Checkbox';
 import { checked } from '../App.css';
 import { QUERY_ME } from '../utils/queries';
 import Checkbox from '../components/Checkbox/index';
@@ -119,20 +120,24 @@ function Checklist(props) {
 				</p>
 				{checklistItems.map((checklistItem, index) => (
 					<div key={index}>
-						<input type="checkbox" id={checklistItem.attributes} name={checklistItem.attributes} className='checkbox'></input>
-						<label htmlFor={checklistItem.attributes} className='checkbox-label'><span>{checklistItem.name}</span></label>
+						<label htmlFor={checklistItem.attributes} className='checkbox-label'>
+							<input type="checkbox" id={checklistItem.attributes} name={checklistItem.attributes} className='checkbox'></input>
+							<span>{checklistItem.name}</span>
+						</label>
 					</div>
 				))}
 				<br></br>
 				<h4 className='checklist-section-header'>Personal Items</h4>
 				{personalItems.map((personalItem, index)=> (
 					<div key={index}>
-						<input type="checkbox" name={personalItem.attributes} id={personalItem.attributes} className='checkbox'/>
-						<label htmlFor={personalItem.attributes} className='checkbox-label'><span>{personalItem.name}</span></label>
+						<label htmlFor={personalItem.attributes} className='checkbox-label'>
+							<input type="checkbox" name={personalItem.attributes} id={personalItem.attributes} className='checkbox'/>
+							<span>{personalItem.name}</span>
+						</label>
 					</div>
 				))}
 				<br></br>
-				<button id="saveBtn" type="button" onClick={saveCheckbox}>Save</button>
+				<button id="saveBtn" type="button" onClick={saveCheckbox}><FontAwesomeIcon icon={faClipboardCheck}/> Save</button>
 			</form>
 		</div>
 	);

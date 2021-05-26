@@ -11,19 +11,19 @@ function Nav() {
       return (
         <ul className="flex-row logged-in">
           <li>
-            <a href="/">
-              <FontAwesomeIcon icon={faHome}/>
-            </a>
+            <Link to='/'>
+              <FontAwesomeIcon className='nav-item' icon={faHome}/>
+            </Link>
           </li>
           <li>
-            <a href="/checklist">
-              <FontAwesomeIcon icon={faTasks}/>
-            </a>
+            <Link to="/checklist">
+              <FontAwesomeIcon className='nav-item' icon={faTasks}/>
+            </Link>
           </li>
           <li>
-            <a href="/" onClick={() => Auth.logout()}>
-              <FontAwesomeIcon icon={faUserTimes}/>
-            </a>
+            <Link to="/" onClick={() => Auth.logout()}>
+              <FontAwesomeIcon className='nav-item' icon={faUserTimes}/>
+            </Link>
           </li>
         </ul>
       );

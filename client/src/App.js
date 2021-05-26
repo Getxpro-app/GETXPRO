@@ -10,7 +10,7 @@ import Checklist from './pages/Checklist-db';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Checklist from './pages/Checklist';
+// import Checklist from './pages/Checklist';
 import Nav from './components/Nav';
 
 const client = new ApolloClient({

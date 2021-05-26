@@ -69,6 +69,9 @@ nav {
   position: absolute;
   background-color: rgb(187, 185, 255);
   margin: 0 auto;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 50vw;
 }
 
 nav ul {
@@ -79,12 +82,23 @@ nav ul li {
   list-style: none;
   text-decoration: none; 
   justify-content: space-around;
-  margin: 0 66px;
+  margin: 0 12%;
 }
 
 nav ul li a {
   color: white;
   font-size: 30px;
+}
+
+.nav-item {
+  padding: 6px;
+}
+
+nav ul li a :hover {
+background-color: white;
+color: rgb(187, 185, 255);
+border-radius: 25px;
+transition: .8s;
 }
 
 .flex-row {
@@ -317,10 +331,9 @@ nav ul li a {
 
 .checkbox:after {
   content: "✔";
-
   display: none;
   color: black;
-  font-size: 90%;
+  font-size: 120%;
 }
 
 .checkbox:checked {
@@ -329,4 +342,14 @@ nav ul li a {
 
 .checkbox:checked::after {
   display: block;
+}
+
+#saveBtn {
+  background-color: rgb(187, 185, 255);
+  color: white;
+  padding: 12px;
+  font-size: 24px;
+  font-weight: bolder;
+  border-radius: 15px;
+  margin-left: 35%;
 }
