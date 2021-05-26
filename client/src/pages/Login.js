@@ -119,10 +119,11 @@ function LoginUser(props) {
             <p className="error-text" >The provided credentials are incorrect</p>
           </div> : null
         }
-        <div className="flex-row">
+        <div>
           <button type="submit" className="btn login-btn">
             LOG IN
           </button>
+          <br></br>
           <div className='signup-text'>
             <p>Don't have an account? <Link to='/signup' className='signup-link'>Sign Up</Link></p>
           </div>
